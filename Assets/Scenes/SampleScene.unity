@@ -240,8 +240,8 @@ MonoBehaviour:
   startColor: {r: 0, g: 0.6698113, b: 0.44867876, a: 1}
   endColor: {r: 0.5660378, g: 0, b: 0, a: 1}
   generatorPoint: {fileID: 1878714774}
-  x0ffset: 18
-  y0ffset: 9
+  xOffset: 15
+  yOffset: 7
   roomLayer:
     serializedVersion: 2
     m_Bits: 256

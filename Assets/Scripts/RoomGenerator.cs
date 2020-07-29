@@ -25,18 +25,18 @@ public class RoomGenerator : MonoBehaviour
 
     [Header("位置控制")]
     public Transform generatorPoint;
-    public float x0ffset;
-    public float y0ffset;
+    public float xOffset;
+    public float yOffset;
 
     public LayerMask roomLayer;
 
-    public List<GameObject> rooms = new List<GameObject>();
+    public List<Room> rooms = new List<Room>();
 
     void Start()
     {
         for (int i = 0; i < roomNumber; i++)
         {
-            rooms.Add(Instantiate(roomPrefab, generatorPoint.position, Quaternion.identity));
+            rooms.Add(Instantiate(roomPrefab, generatorPoint.position, Quaternion.identity).GetComponent<Room>());
 
             //改变point的位置
             ChangePointPos();
@@ -45,14 +45,15 @@ public class RoomGenerator : MonoBehaviour
         
         rooms[0].GetComponent<SpriteRenderer>().color = startColor;
         
-        endRoom = rooms[0];
+        endRoom = rooms[0].gameObject;
         foreach(var room in rooms)
         {
             //sqrMagnitude xyz相乘后相加(x*x+y*y+z*z)
-            if(room.transform.position.sqrMagnitude > endRoom.transform.position.sqrMagnitude)
-            {
-                endRoom = room;
-            }
+            // if(room.transform.position.sqrMagnitude > endRoom.transform.position.sqrMagnitude)
+            // {
+            //     endRoom = room.gameObject;
+            // }
+            SetupRoom(room, room.transform.position);
         }
         endRoom.GetComponent<SpriteRenderer>().color = endColor;
 
@@ -79,23 +80,34 @@ public class RoomGenerator : MonoBehaviour
             switch (direction)
             {
                 case Direction.up:
-                    generatorPoint.position += new Vector3(0, y0ffset, 0);
+                    generatorPoint.position += new Vector3(0, yOffset, 0);
                     break;
 
                 case Direction.down:
-                    generatorPoint.position += new Vector3(0, -y0ffset, 0);
+                    generatorPoint.position += new Vector3(0, -yOffset, 0);
                     break;
 
                 case Direction.left:
-                    generatorPoint.position += new Vector3(-x0ffset, 0, 0);
+                    generatorPoint.position += new Vector3(-xOffset, 0, 0);
                     break;
 
                 case Direction.right:
-                    generatorPoint.position += new Vector3(x0ffset, 0, 0);
+                    generatorPoint.position += new Vector3(xOffset, 0, 0);
                     break;
             }
         }
         while(Physics2D.OverlapCircle(generatorPoint.position, 0.2f, roomLayer));
 
+    }
+
+
+    public void SetupRoom(Room newRoom, Vector3 roomPosition)
+    {
+        newRoom.roomUp = Physics2D.OverlapCircle(roomPosition + new Vector3(0, yOffset, 0), 0.2f, roomLayer);
+        newRoom.roomDown = Physics2D.OverlapCircle(roomPosition + new Vector3(0, -yOffset, 0), 0.2f, roomLayer);
+        newRoom.roomLeft = Physics2D.OverlapCircle(roomPosition + new Vector3(-xOffset, 0, 0), 0.2f, roomLayer);
+        newRoom.roomRight = Physics2D.OverlapCircle(roomPosition + new Vector3(xOffset, 0, 0), 0.2f, roomLayer);
+
+        newRoom.UpdateRoom();
     }
 }
