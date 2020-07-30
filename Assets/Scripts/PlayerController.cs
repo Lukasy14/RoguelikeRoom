@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
+    public GameObject map;
 
     public float speed;
     Vector2 movement;
@@ -21,6 +22,19 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            if(map.activeInHierarchy == false)
+            {
+                map.SetActive(true);
+            }
+            else if(map.activeInHierarchy == true)
+            {
+                map.SetActive(false);
+            }
+        }
+
 
 
         if(movement.x != 0)
