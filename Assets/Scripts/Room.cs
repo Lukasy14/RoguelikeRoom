@@ -12,6 +12,8 @@ public class Room : MonoBehaviour
     public Text text;
 
     public int stepToStart;
+
+    public int doorNumber;
     void Start()
     {
         doorLeft.SetActive(roomLeft);
@@ -25,5 +27,14 @@ public class Room : MonoBehaviour
     {
         stepToStart = (int)(Mathf.Abs(transform.position.x / 15) + Mathf.Abs(transform.position.y / 9));
         text.text = stepToStart.ToString();
+
+        if(roomUp)
+            doorNumber++;
+        if(roomDown)
+            doorNumber++;
+        if(roomLeft)
+            doorNumber++;
+        if(roomRight)
+            doorNumber++;
     }
 }
