@@ -25,7 +25,7 @@ public class Room : MonoBehaviour
 
     public void UpdateRoom()
     {
-        stepToStart = (int)(Mathf.Abs(transform.position.x / 15) + Mathf.Abs(transform.position.y / 9));
+        stepToStart = (int)(Mathf.Abs(transform.position.x / 17) + Mathf.Abs(transform.position.y / 9));
         text.text = stepToStart.ToString();
 
         if(roomUp)

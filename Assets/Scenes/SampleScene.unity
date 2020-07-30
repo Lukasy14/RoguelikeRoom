@@ -240,12 +240,43 @@ MonoBehaviour:
   startColor: {r: 0, g: 0.6698113, b: 0.44867876, a: 1}
   endColor: {r: 0.5660378, g: 0, b: 0, a: 1}
   generatorPoint: {fileID: 1878714774}
-  xOffset: 15
-  yOffset: 7
+  xOffset: 17
+  yOffset: 9
   roomLayer:
     serializedVersion: 2
     m_Bits: 256
-  rooms: []
+  maxStep: 0
+  wallType:
+    singleLeft: {fileID: 4230712397337090731, guid: e2c3fe61fc9b96140878a0600f22a1b1,
+      type: 3}
+    singleRight: {fileID: 4230712397337090731, guid: a2a581b58f2956143a01491311688b45,
+      type: 3}
+    singleUp: {fileID: 4230712397337090731, guid: eae4faa8350289b42a20a0fbaa53acb9,
+      type: 3}
+    singleBottom: {fileID: 4230712397337090731, guid: cefd9dd35f5cfd448a99d4656d243f73,
+      type: 3}
+    doubleLU: {fileID: 4230712397337090731, guid: cd6c2e224e0ba8846a66ca2e712cf5f8,
+      type: 3}
+    doubleLR: {fileID: 4230712397337090731, guid: ac01547f035794f41aa435c90ce20a1c,
+      type: 3}
+    doubleLB: {fileID: 4230712397337090731, guid: 43a232193cb272e4c9dc98a8c6551b9f,
+      type: 3}
+    doubleUR: {fileID: 4230712397337090731, guid: 69b39b5dc636cd34dbb6dfd30d2675f9,
+      type: 3}
+    doubleUB: {fileID: 4230712397337090731, guid: e2c2273b180d0644385937f659e2e872,
+      type: 3}
+    doubleRB: {fileID: 4230712397337090731, guid: a6a198bfdd7dbe745adf9d4dd4d4c9e9,
+      type: 3}
+    tripleLUR: {fileID: 4230712397337090731, guid: a2815fb9f02ae3a47b5850c0fc48e7f5,
+      type: 3}
+    tripleLUB: {fileID: 4230712397337090731, guid: 6945e427432e6584db05fa16e301702f,
+      type: 3}
+    tripleURB: {fileID: 4230712397337090731, guid: 4ca7bd4b4d49c2547adfb787b79d8355,
+      type: 3}
+    tripleLRB: {fileID: 4230712397337090731, guid: 00f53bb9f0a5d804681c0561201d30b7,
+      type: 3}
+    fourDoors: {fileID: 4230712397337090731, guid: 94c71c791f893e14eb1ae03cd2e39128,
+      type: 3}
 --- !u!4 &1312277011
 Transform:
   m_ObjectHideFlags: 0
